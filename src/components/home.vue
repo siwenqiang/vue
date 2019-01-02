@@ -9,7 +9,7 @@
           <h2>电商后台管理系统</h2>
         </el-col>
         <el-col :span="1">
-          <a class="contenttwo">退出</a>
+          <a class="contenttwo" href @click.prevent="handleout()">退出</a>
         </el-col>
       </el-row>
     </el-header>
@@ -82,7 +82,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  //若没有登录，直接用/home的方式访问时，则提示需要登录
+  //在渲染home组件之前
+  beforeCreate() {
+    if (localStorage.getItem("token") == null) {
+      // console.log(111);
+      //编程式导航，将标识改为/login
+      this.$router.push({
+        path: "/login"
+      });
+      //提示
+      this.$message.warning("请先登录");
+    }
+  },
+  methods: {
+    //完成用户退出功能
+    handleout() {
+      //清除localstoragrtoken
+      localStorage.clear();
+      //更改标识回到登录组件
+      this.$router.push({
+        path: "/login"
+      });
+      //提示
+      this.$message.success("退出成功");
+    }
+  }
+};
 </script>
 
 <style>
