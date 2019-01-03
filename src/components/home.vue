@@ -34,7 +34,7 @@
             <el-menu-item index="2-1">
               <i class="el-icon-location"></i>角色列表
             </el-menu-item>
-            <el-menu-item index="2-2">
+            <el-menu-item index="rights">
               <i class="el-icon-location"></i>权限列表
             </el-menu-item>
           </el-submenu>

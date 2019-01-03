@@ -2,11 +2,12 @@
   <!-- // 卡片的组件 -->
   <el-card class="box-card">
     <!-- 面包屑组件 -->
-    <el-breadcrumb separator="/">
+    <!-- <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>用户管理</el-breadcrumb-item>
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-    </el-breadcrumb>
+    </el-breadcrumb> -->
+    <my-bread level1="用户管理" level2="用户列表"></my-bread>
     <!-- /搜索框和按钮 -->
     <el-row>
       <el-col>

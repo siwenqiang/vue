@@ -6,9 +6,13 @@ import router from './router'
 import Http from './plugins/http'
 import ElementUI from 'element-ui'
 import moment from 'moment'
+//导出的是组件所在对象
+import Mybread from '@/components/cusBread.vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/index.css'
 
+//声明一个全局组件
+Vue.component(Mybread.name,Mybread)
 // 处理日期格式（全局过滤器）
 Vue.filter('formdate', (v) => {
   return moment(v).format('YYYY-MM-DD')
