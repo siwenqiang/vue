@@ -16,62 +16,13 @@
     <el-container>
       <el-aside width="200px" class="aside">
         <el-menu default-active="2" unique-opened router>
-          <el-submenu index="1">
+          <el-submenu :index="''+item1.order" v-for="(item1,i) in list" :key="i">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>用户管理</span>
+              <span>{{item1.authName}}</span>
             </template>
-            <el-menu-item index="users">
-              <i class="el-icon-location"></i>用户列表
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>权限管理</span>
-            </template>
-            <el-menu-item index="roles">
-              <i class="el-icon-location"></i>角色列表
-            </el-menu-item>
-            <el-menu-item index="rights">
-              <i class="el-icon-location"></i>权限列表
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>商品管理</span>
-            </template>
-            <el-menu-item index="3-1">
-              <i class="el-icon-location"></i>商品列表
-            </el-menu-item>
-            <el-menu-item index="3-2">
-              <i class="el-icon-location"></i>分类参数
-            </el-menu-item>
-            <el-menu-item index="3-3">
-              <i class="el-icon-location"></i>商品分类
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="4">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>订单管理</span>
-            </template>
-            <el-menu-item index="4-1">
-              <i class="el-icon-location"></i>订单列表
-            </el-menu-item>
-          </el-submenu>
-
-          <el-submenu index="5">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>数据统计</span>
-            </template>
-            <el-menu-item index="5-1">
-              <i class="el-icon-location"></i>数据报表
+            <el-menu-item :index="item2.path" v-for="(item2,i) in item1.children" :key="i">
+              <i class="el-icon-location"></i>{{item2.authName}}
             </el-menu-item>
           </el-submenu>
         </el-menu>
@@ -85,6 +36,11 @@
 
 <script>
 export default {
+  data(){
+    return{
+      list:[]
+    }
+  },
   //若没有登录，直接用/home的方式访问时，则提示需要登录
   //在渲染home组件之前
   beforeCreate() {
@@ -98,6 +54,9 @@ export default {
       this.$message.warning("请先登录");
     }
   },
+  created(){
+    this.showListRoles()
+  },
   methods: {
     //完成用户退出功能
     handleout() {
@@ -109,6 +68,12 @@ export default {
       });
       //提示
       this.$message.success("退出成功");
+    },
+    //完成左侧用户功能列表权限的展示功能
+    async showListRoles(){
+      const res = await this.$http.get('menus')
+      console.log(res)
+      this.list = res.data.data
     }
   }
 };
