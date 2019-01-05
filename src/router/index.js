@@ -5,6 +5,8 @@ import Home from '@/components/home.vue'
 import Users from '@/components/users.vue'
 import Rights from '@/components/rights.vue'
 import Roles from '@/components/roles.vue'
+import Goods from '@/components/goodslist.vue'
+import goodsAdd from '@/components/goodsadd.vue'
 // 单独引入组件
 import {
   Message
@@ -36,6 +38,15 @@ const router= new Router({
       {
         path:'/roles',
         component:Roles
+      },
+      {
+        path:'/goods',
+        component:Goods
+      },
+      {
+        path: '/goods/add',
+        name:'goodsadd',
+        component: goodsAdd,
       }
     ]
   }
