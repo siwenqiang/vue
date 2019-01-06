@@ -72,8 +72,9 @@ export default {
     //完成左侧用户功能列表权限的展示功能
     async showListRoles(){
       const res = await this.$http.get('menus')
-      console.log(res)
+      
       this.list = res.data.data
+      // console.log(this.list)
     }
   }
 };

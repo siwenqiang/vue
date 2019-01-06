@@ -210,7 +210,7 @@ export default {
         this.total = total;
         // this.$message.success(msg)
         //拿到的是当前分页内所有用户的数据
-        console.log(users);
+        // console.log(users);
       }
     },
     //当每页显示条数改变时
@@ -218,13 +218,13 @@ export default {
       this.pagesize = val;
       this.pagenum = 1;
       this.getTabledata();
-      console.log(`每页 ${val} 条`);
+      // console.log(`每页 ${val} 条`);
     },
     //当前页码数改变时
     handleCurrentChange(val) {
       this.pagenum = val;
       this.getTabledata();
-      console.log(`当前页: ${val}`);
+      // console.log(`当前页: ${val}`);
     },
     //搜索框搜索功能
     //这里ui组件，不用自己写搜索功能么？
@@ -273,7 +273,7 @@ export default {
       })
         .then(async () => {
           const res = await this.$http.delete(`users/${users.id}`);
-          console.log(res);
+          // console.log(res);
           const {
             data: {
               data,
@@ -333,7 +333,7 @@ export default {
     //渲染 分配角色的对话框
     async showCurrRole(user) {
       // user是点击对号的当前的用户信息
-      console.log(user);
+      // console.log(user);
       this.currUserName = user.username;
       
       this.dialogFormVisibleRole = true;
@@ -341,10 +341,10 @@ export default {
       const res = await this.$http.get("roles");
       this.roles = res.data.data;
       // roles中是所有角色对应的ID值
-      console.log(res);
+      // console.log(res);
       //发送axios请求获取用户角色对应的ID
       const res2 = await this.$http.get(`users/${user.id}`);
-      console.log(res2);
+      // console.log(res2);
 
       this.currUserRoleId = res2.data.data.rid;
       //此处因为发送更改用户角色的请求需要当前角色的id，但点击确定按钮不在template中，所以无法

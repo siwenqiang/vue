@@ -7,6 +7,7 @@ import Rights from '@/components/rights.vue'
 import Roles from '@/components/roles.vue'
 import Goods from '@/components/goodslist.vue'
 import goodsAdd from '@/components/goodsadd.vue'
+import Params from '@/components/params.vue'
 // 单独引入组件
 import {
   Message
@@ -44,9 +45,14 @@ const router= new Router({
         component:Goods
       },
       {
-        path: '/goods/add',
+        path: '/goodsadd',
         name:'goodsadd',
         component: goodsAdd,
+      },
+      {
+        path:'/params',
+        name:'params',
+        component:Params
       }
     ]
   }
@@ -54,7 +60,7 @@ const router= new Router({
 })
 
 router.beforeEach((to,from,next)=>{
-  console.log('路由守卫拦截了路由配置---')
+  // console.log('路由守卫拦截了路由配置---')
   if(to.path==='/login'){
     next()
   }else{
