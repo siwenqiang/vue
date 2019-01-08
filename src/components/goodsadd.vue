@@ -148,7 +148,7 @@ export default {
     async getGoodscate(){
       const res = await this.$http.get('categories?type=3')
       this.options = res.data.data
-      // console.log(res)
+      console.log(res)
     },
     //级联选择器的方法
     handleChange(){
@@ -161,7 +161,7 @@ export default {
       if(this.active==='2'){
         if(this.selectedOptions.length===3){
           const res = await this.$http.get(`categories/${this.selectedOptions[2]}/attributes?sel=many`)
-          console.log(res)
+          // console.log(res)
           this.arrDy = res.data.data 
 
           this.arrDy.forEach(item=>{
@@ -178,7 +178,7 @@ export default {
       if(this.active==='3'){
         if(this.selectedOptions.length===3){
           const res = await this.$http.get(`categories/${this.selectedOptions[2]}/attributes?sel=only`)
-          console.log(res)
+          // console.log(res)
           this.arrStatic = res.data.data 
 
         }else{
@@ -231,7 +231,7 @@ export default {
         path:'/goods'
       })
 
-      console.log(res)
+      // console.log(res)
     }
   }
 }
